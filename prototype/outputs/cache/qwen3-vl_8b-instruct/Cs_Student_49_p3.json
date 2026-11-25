@@ -1,0 +1,1 @@
+{"text": "{\"answers\": [{\"q\": 26, \"student_answer\": \"Structured data is data that has been prepared properly in CSV or excel sheet. Semi-structured data is a little messy of data than structured data, for that are normally in form of HTML, etc.\"}]}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 58, "seconds": 4.3006675243377686}

@@ -1,0 +1,41 @@
+% =====================================================================
+%  Checking the Checker -- Taleemabad "Future of Education" Challenge
+%  Main file: structure only. Content lives in the included files.
+%  Build with XeLaTeX (needed for Times New Roman):
+%     xelatex main -> bibtex main -> xelatex main -> xelatex main
+%     or: latexmk -xelatex main.tex      (Overleaf: Menu > Compiler > XeLaTeX)
+% =====================================================================
+\documentclass[12pt,a4paper,oneside]{report}
+\input{preamble}
+
+\begin{document}
+
+% ---------------- Front matter (roman page numbers) ----------------
+\pagenumbering{roman}
+\input{frontmatter/titlepage}
+%\input{frontmatter/infopage}
+\input{frontmatter/summary}
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+
+% ---------------- Main chapters (arabic page numbers) ----------------
+\clearpage
+\pagenumbering{arabic}
+\input{sections/01-problem}
+\input{sections/02-models}
+\input{sections/03-prototype}
+\input{sections/04-conclusion}
+
+% ---------------- References ----------------
+\bibliographystyle{unsrtnat-numeric}
+\bibliography{bib/references}
+
+% ---------------- Appendices ----------------
+\appendix
+\input{appendix/A-decision-log}
+\input{appendix/B-reproducibility}
+
+\end{document}

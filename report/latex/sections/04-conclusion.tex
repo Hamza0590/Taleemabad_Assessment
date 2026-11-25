@@ -1,0 +1,17 @@
+% =====================================================================
+\chapter{Conclusion}
+\label{sec:conclusion}
+% =====================================================================
+This project started from one question I could not let go of: if an examiner makes a mistake, who notices? The evidence
+shows the question is real. Marking errors are documented, examiners are paid per script, most scripts are never seen by
+a second person, and boards do not publish how often marks are wrong.
+
+The prototype shows that a cheap, local audit layer can help. It reads students' handwriting well, its simple rules
+catch arithmetic errors with certainty, and its AI second reader found a real six-mark under-marking in a dataset that
+was described as verified. With the same re-checking effort, risk ranking found about 1.5x more planted errors than random
+checking, and about 2x with the best combination of signals.
+
+The prototype also shows clearly what does not work yet: reading the examiner's red ink. That is the first thing I would
+fix, and it is exactly where an in-house GPU, larger models and fine-tuning on real marked scripts would make the biggest
+difference. The AI should never give the final mark. Its job is to make sure that the scripts most likely to be wrong are
+the ones a human looks at first.

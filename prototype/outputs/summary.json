@@ -1,0 +1,38 @@
+{
+ "chosen_pipeline": "C",
+ "chosen_model": "qwen3-vl:8b-instruct",
+ "red_read_error": 0.726,
+ "h1_at_20pct_all": [
+  {
+   "set": "all scripts",
+   "budget": 0.2,
+   "random_recall": 0.203,
+   "random_95": [
+    0.0,
+    0.46
+   ],
+   "ranked_recall": 0.538,
+   "ranked_95": [
+    0.1,
+    0.62
+   ]
+  }
+ ],
+ "h1_at_20pct_without_uncertain": [
+  {
+   "set": "without uncertain",
+   "budget": 0.2,
+   "random_recall": 0.186,
+   "random_95": [
+    0.0,
+    0.67
+   ],
+   "ranked_recall": 0.667,
+   "ranked_95": [
+    0.0,
+    1.0
+   ]
+  }
+ ],
+ "seconds_per_script": 48.052653431892395
+}

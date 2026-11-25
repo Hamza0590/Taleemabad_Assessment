@@ -1,0 +1,114 @@
+{
+ "Student_1": [
+  {
+   "type": "J2",
+   "q": 20
+  }
+ ],
+ "Student_2": [],
+ "Student_3": [],
+ "Student_4": [],
+ "Student_5": [],
+ "Student_6": [],
+ "Student_7": [],
+ "Student_8": [],
+ "Student_9": [],
+ "Student_10": [],
+ "Student_11": [],
+ "Student_12": [],
+ "Student_13": [],
+ "Student_14": [
+  {
+   "type": "C1",
+   "q": 8
+  },
+  {
+   "type": "C3",
+   "q": 7
+  }
+ ],
+ "Student_15": [],
+ "Student_16": [],
+ "Student_17": [],
+ "Student_18": [],
+ "Student_19": [
+  {
+   "type": "C3",
+   "q": 23
+  }
+ ],
+ "Student_20": [],
+ "Student_21": [],
+ "Student_22": [],
+ "Student_23": [],
+ "Student_24": [],
+ "Student_25": [
+  {
+   "type": "C3",
+   "q": 6
+  },
+  {
+   "type": "J2",
+   "q": 22
+  }
+ ],
+ "Student_26": [
+  {
+   "type": "J1",
+   "q": 11
+  }
+ ],
+ "Student_27": [],
+ "Student_28": [],
+ "Student_29": [],
+ "Student_30": [
+  {
+   "type": "J3",
+   "q": 20
+  },
+  {
+   "type": "C3",
+   "q": 30
+  }
+ ],
+ "Student_31": [],
+ "Student_32": [
+  {
+   "type": "J2",
+   "q": 12
+  }
+ ],
+ "Student_33": [],
+ "Student_34": [
+  {
+   "type": "J2",
+   "q": 18
+  }
+ ],
+ "Student_35": [
+  {
+   "type": "J2",
+   "q": 9
+  }
+ ],
+ "Student_36": [],
+ "Student_37": [],
+ "Student_38": [],
+ "Student_39": [],
+ "Student_40": [],
+ "Student_41": [],
+ "Student_42": [],
+ "Student_43": [],
+ "Student_44": [],
+ "Student_45": [],
+ "Student_46": [],
+ "Student_47": [],
+ "Student_48": [],
+ "Student_49": [
+  {
+   "type": "C2",
+   "q": 8
+  }
+ ],
+ "Student_50": []
+}

@@ -1,0 +1,28 @@
+# Dataset: download from the DOI (see data/README.md). Never commit it:
+# it contains files with real student names (Student_MCQ.csv, file.txt).
+data/*
+!data/README.md
+!data/baseline_fixes.csv
+
+# Rendered page images (rebuilt by the notebook, ~145 MB)
+prototype/outputs/pages/
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# LaTeX build files
+report/latex/*.aux
+report/latex/*.log
+report/latex/*.out
+report/latex/*.toc
+report/latex/*.lof
+report/latex/*.lot
+report/latex/*.bbl
+report/latex/*.blg
+report/latex/*.synctex.gz
+report/latex/main.pdf
+
+# Office lock files
+~$*

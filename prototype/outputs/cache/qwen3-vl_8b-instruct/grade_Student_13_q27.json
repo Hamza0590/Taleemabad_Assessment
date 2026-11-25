@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 1.5, \"reason\": \"The student correctly identifies IQR and Z-score for detection and trimming/capping for handling, but misstates 'quantile floor' as a method.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 44, "seconds": 2.789189338684082}

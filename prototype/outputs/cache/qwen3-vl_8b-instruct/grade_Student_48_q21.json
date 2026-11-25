@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 1.5, \"reason\": \"The answer correctly identifies supervised learning as using labeled data for prediction but omits the key phrase 'known inputs and outputs' from the model answer.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 43, "seconds": 2.7586395740509033}

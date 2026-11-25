@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 1.5, \"reason\": \"The answer correctly identifies supervised learning as using labelled data and learning a function from inputs to outputs, but omits the key phrase 'known inputs and outputs' from the model answer.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 50, "seconds": 2.8570351600646973}

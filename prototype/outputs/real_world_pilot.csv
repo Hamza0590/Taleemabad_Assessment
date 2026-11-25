@@ -1,0 +1,51 @@
+student,risk,ai_mcq,recorded_mcq,reasons,rank
+Student_11,27.5,10.0,10.0,['Q34: 4.0 > max 2'],1
+Student_12,24.5,13.0,12.0,['short-answer section total does not add up'],2
+Student_31,23.5,13.0,14.0,['MCQ ticks on page 13 vs recorded 14.0'],3
+Student_17,23.0,9.0,14.0,['MCQ ticks on page 2 vs recorded 14.0'],4
+Student_42,21.0,13.0,14.0,['MCQ ticks on page 12 vs recorded 14.0'],5
+Student_39,20.5,5.0,6.0,['MCQ ticks on page 8 vs recorded 6.0'],6
+Student_50,20.0,12.0,13.0,['MCQ ticks on page 1 vs recorded 13.0'],7
+Student_30,19.5,11.0,13.0,['MCQ ticks on page 2 vs recorded 13.0'],8
+Student_29,18.5,13.0,16.0,['MCQ ticks on page 17 vs recorded 16.0'],9
+Student_4,18.5,16.0,15.0,['MCQ ticks on page 12 vs recorded 15.0'],10
+Student_3,16.5,10.0,11.0,['MCQ ticks on page 5 vs recorded 11.0'],11
+Student_1,16.5,11.0,12.0,['MCQ ticks on page 10 vs recorded 12.0'],12
+Student_10,15.5,8.0,2.0,[],13
+Student_9,15.5,9.0,9.0,['MCQ ticks on page 2 vs recorded 9.0'],14
+Student_14,15.0,11.0,11.0,['MCQ ticks on page 5 vs recorded 11.0'],15
+Student_43,15.0,13.0,13.0,['MCQ ticks on page 7 vs recorded 13.0'],16
+Student_34,14.5,12.0,13.0,[],17
+Student_46,14.5,16.0,17.0,['MCQ ticks on page 16 vs recorded 17.0'],18
+Student_13,14.0,18.0,19.0,[],19
+Student_32,13.5,7.0,7.0,['MCQ ticks on page 9 vs recorded 7.0'],20
+Student_21,13.0,12.0,13.0,[],21
+Student_28,12.5,15.0,14.0,['MCQ ticks on page 13 vs recorded 14.0'],22
+Student_33,12.5,13.0,12.0,['MCQ ticks on page 3 vs recorded 12.0'],23
+Student_22,12.0,10.0,11.0,['MCQ ticks on page 1 vs recorded 11.0'],24
+Student_38,12.0,15.0,16.0,['MCQ ticks on page 11 vs recorded 16.0'],25
+Student_8,12.0,12.0,11.0,['MCQ ticks on page 14 vs recorded 11.0'],26
+Student_41,12.0,12.0,11.0,[],27
+Student_48,11.5,8.0,6.0,['MCQ ticks on page 4 vs recorded 6.0'],28
+Student_45,11.5,9.0,10.0,['MCQ ticks on page 12 vs recorded 10.0'],29
+Student_37,11.0,7.0,7.0,[],30
+Student_23,11.0,10.0,10.0,['MCQ ticks on page 13 vs recorded 10.0'],31
+Student_6,11.0,13.0,15.0,[],32
+Student_2,11.0,12.0,10.0,[],33
+Student_44,11.0,10.0,11.0,[],34
+Student_27,11.0,11.0,10.0,[],35
+Student_47,10.5,12.0,13.0,['MCQ ticks on page 7 vs recorded 13.0'],36
+Student_26,10.5,8.0,10.0,['MCQ ticks on page 14 vs recorded 10.0'],37
+Student_36,10.5,12.0,11.0,[],38
+Student_7,10.0,8.0,9.0,[],39
+Student_25,9.5,13.0,13.0,[],40
+Student_20,9.0,8.0,9.0,['MCQ ticks on page 7 vs recorded 9.0'],41
+Student_18,9.0,7.0,10.0,['MCQ ticks on page 7 vs recorded 10.0'],42
+Student_24,8.5,14.0,16.0,['MCQ ticks on page 12 vs recorded 16.0'],43
+Student_49,8.0,12.0,12.0,[],44
+Student_5,7.0,11.0,11.0,[],45
+Student_40,6.5,12.0,12.0,[],46
+Student_35,3.0,10.0,11.0,[],47
+Student_16,2.0,6.0,8.0,[],48
+Student_19,2.0,11.0,11.0,[],49
+Student_15,1.0,6.0,5.0,[],50

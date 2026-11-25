@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 0, \"reason\": \"RMSE and R2_score are evaluation metrics, not hyperparameters.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 26, "seconds": 2.538486957550049}

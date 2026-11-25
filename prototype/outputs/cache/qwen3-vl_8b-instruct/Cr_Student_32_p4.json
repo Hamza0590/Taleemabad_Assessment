@@ -1,0 +1,1 @@
+{"text": "{\n  \"answers\": [\n    {\n      \"q\": 24,\n      \"red_symbol\": \"none\",\n      \"red_mark\": null\n    },\n    {\n      \"q\": 31,\n      \"red_symbol\": \"cross\",\n      \"red_mark\": 1\n    }\n  ],\n  \"page_totals\": []\n}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 71, "seconds": 4.518253326416016}

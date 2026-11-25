@@ -1,0 +1,267 @@
+% =====================================================================
+\chapter{Practical Prototype: Parakh}
+\label{sec:prototype}
+% =====================================================================
+All numbers in this chapter come from the completed notebook run \citep{notebook}. The design and every change are
+recorded in the decision log (Appendix~\ref{app:decisions}).
+
+\section{What I built}
+A working proof of concept of an \textbf{AI audit layer for exam marking}. It does not mark papers. It checks the examiner's
+marking and tells reviewers \textbf{which scripts to re-check first} (Figure~\ref{fig:pipeline}). For each marked script it:
+\begin{enumerate}
+  \item \textbf{Reads the page.} Turns the scanned PDF into images and separates the examiner's red ink from the student's
+        blue or black ink with a simple colour rule. A local vision-language model then reads the student's answers and
+        the examiner's ticks and marks.
+  \item \textbf{Runs consistency rules.} Marks above the question maximum, totals that do not add up, an answered question
+        with no mark.
+  \item \textbf{Runs an AI second reader.} Estimates a mark for every answer from the answer key (MCQs by the key letter,
+        short answers by key points). This is never used as the mark, only as a second opinion.
+  \item \textbf{Gives every script a risk score} and ranks the scripts, so a human re-checks the most suspicious ones first.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=5mm, every node/.style={font=\footnotesize},
+  box/.style={draw=accent,fill=soft,rounded corners=2pt,align=center,minimum height=10mm,text width=2.3cm},
+  arr/.style={-{Stealth[length=2mm]},accent,thick}]
+\node[box] (pdf) {Marked script\\(scanned PDF)};
+\node[box,right=of pdf] (split) {Colour rule:\\student layer +\\red layer};
+\node[box,right=of split] (vlm) {Qwen3-VL-8B\\reads answers,\\ticks, red marks};
+\node[box,right=of vlm,yshift=9mm] (rules) {Consistency\\rules};
+\node[box,right=of vlm,yshift=-9mm] (ai) {AI second reader\\(mark estimate)};
+\node[box,right=of rules,yshift=-9mm] (rank) {Risk score\\+ ranked list};
+\draw[arr] (pdf)--(split); \draw[arr] (split)--(vlm);
+\draw[arr] (vlm)--(rules); \draw[arr] (vlm)--(ai);
+\draw[arr] (rules)--(rank); \draw[arr] (ai)--(rank);
+\end{tikzpicture}
+\caption{The prototype pipeline. All models run locally through Ollama on one consumer GPU.}
+\label{fig:pipeline}
+\end{figure}
+
+\paragraph{Data.} Real board scripts are not public, and collecting my own in two days was not possible, so I used a public
+dataset of \textbf{50 real handwritten university exam scripts} in English (Data Science: 20 MCQs and 15 short answers, 200
+pages). It contains the answer key, the scripts marked by a teacher in red ink, and the teacher's mark list
+\citep{dataset2026}. Researchers note that such end-to-end handwritten grading datasets are rare because exam scripts are
+privacy-sensitive \citep{engexams2026}. I chose any English paper with an answer key rather than only Physics \dec{D008}.
+
+\section{Technologies and models}
+\begin{table}[H]
+\centering
+\small
+\caption{Technologies used.}
+\label{tab:tech}
+\begin{tabularx}{\linewidth}{@{}P{4.3cm}L@{}}
+\toprule
+\textbf{Part} & \textbf{Technology} \\
+\midrule
+Language and environment & Python; one Jupyter notebook with a heading on every block \\
+PDF to image & PyMuPDF at 150 DPI \citep{pymupdf} \\
+Red-ink separation & PIL and NumPy, HSV colour threshold (no AI) \\
+Model runtime & Ollama, fully local \citep{ollama}, one NVIDIA RTX 5060 Ti (16\,GB) \\
+Page reader (chosen by bake-off) & \textbf{Qwen3-VL-8B-Instruct}, reading two images per page (student layer and red layer) \\
+Compared in the bake-off & Qwen3-VL-4B-Instruct, MiniCPM-V 4.5, GLM-OCR (0.9B) \\
+AI second reader & Qwen3-VL-8B-Instruct in text-only mode, grading against the answer key \\
+Analysis & pandas, NumPy, matplotlib; bootstrap intervals; 30 repeated random runs \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Why I chose them}
+\begin{itemize}
+  \item \textbf{Local only, no cloud APIs} \dec{D009}. Exam scripts are secret; a board cannot send them to a foreign API.
+  \item \textbf{Vision-language models instead of classic OCR.} Answers appear in any order, mixed with ticks and margin
+        marks. A model that understands the page can say ``this is question 26'' and ``this is a red 2''. Line-based OCR
+        cannot do that without extra segmentation \dec{D011}.
+  \item \textbf{Qwen3-VL-8B as the main candidate.} A 2026 handwriting benchmark found it beats much larger models on
+        handwritten OCR \citep{omnihand2026}, and it fits on a 16\,GB GPU. Small OCR-only models top printed-document
+        benchmarks \citep{roboflowocr2026}, so I tested one too.
+  \item \textbf{But the choice was made by measurement.} A bake-off on 5 scripts compared 7 model and method combinations,
+        and the winner was picked by a rule fixed before seeing the results \dec{D011,D016}.
+  \item \textbf{The AI never gives marks}, in line with current regulator advice \citep{ofqual2026}.
+\end{itemize}
+
+\section{What I did myself, and where I used AI assistance}
+\label{sec:ai-help}
+I used Claude in this project. It was my research assistant, and it wrote the code. I want to be clear about
+which parts were mine and which were not.
+
+\textbf{What I decided and did myself:}
+\begin{itemize}
+  \item \textbf{The problem.} It comes from my own life: my FSc Physics paper was ticked as correct but given about half the
+        marks, and the ``rechecking'' only added the marks up again.
+  \item \textbf{Keeping the story focused.} Teacher shortages and parents' attitudes are real problems too, but they are not
+        directly about marking, so I left them out \dec{D005}.
+  \item \textbf{The scope and the data.} Any English paper with an answer key; a public dataset, stated openly \dec{D008}.
+        When we found errors and real student names inside that dataset, I decided to report them as the dataset's own
+        problems \dec{D012}.
+  \item \textbf{Running everything on my own computer}, with no cloud AI \dec{D009}.
+  \item \textbf{Small but important calls}, like using the official answer key for Q1 \dec{D010}.
+  \item \textbf{Knowing when to stop.} Reading the teacher's red marks only reached 27--29\%. With two days, I accepted this,
+        recorded it as the main limitation, and moved on \dec{D016}.
+  \item \textbf{The ablation, and honest reporting.} I asked for the results to be written down whether good or bad \dec{D019}.
+  \item \textbf{Running all the experiments} on my GPU, including finding and fixing a run that became about 12 times
+        slower \dec{D017}.
+  \item \textbf{The decision log.} From the first hour, every choice, rejected option and failure was written down.
+\end{itemize}
+
+\textbf{Where Claude helped:} finding and summarising sources; suggesting options at each step (I accepted some and rejected
+others); writing the notebook code from the agreed design and testing it with a fake model before my real runs; and drafting this report, which I then read and corrected. I have gone through every section of the
+notebook, and I can explain what each part does and why it is there.
+
+\section{Results}
+
+\subsection{Reading the scripts (bake-off on 5 scripts)}
+\begin{table}[H]
+\centering
+\small
+\caption[Bake-off. Method A reads the raw page; method C reads a student layer and a red layer separately; method B uses an
+OCR-only model.]{Bake-off. Method A reads the raw page; method C reads a student layer and a red layer separately; method B uses an
+OCR-only model \dec{D016}.}
+\label{tab:bakeoff}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Method + model} & \textbf{Questions found} & \textbf{Student letters} & \textbf{Red numbers} & \textbf{s/page} \\
+\midrule
+A + Qwen3-VL-8B & 95.7\% & 100\% & 12.9\% & 8.7 \\
+A + Qwen3-VL-4B & 58.3\% & 40\% & 11.3\% & 15.6 \\
+A + MiniCPM-V 4.5 & 96.9\% & 97\% & 16.1\% & 10.9 \\
+\textbf{C + Qwen3-VL-8B (chosen)} & 95.1\% & 99\% & \textbf{27.4\%} & 12.2 \\
+C + Qwen3-VL-4B & 93.9\% & 99\% & 16.1\% & 28.8 \\
+C + MiniCPM-V 4.5 & 98.2\% & 99\% & 9.7\% & 13.4 \\
+B + GLM-OCR & 59.5\% & 97\% & cannot see red & 27.8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\textbf{Reading the student is solved (about 99\%). Reading the examiner's red numbers is not (best 27\%).}
+
+\subsection{AI second reader (all 50 scripts)}
+It gives exactly the true mark on \textbf{70\%} of answers and is off by \textbf{0.37 marks} on average \dec{D018}.
+
+\subsection{H1: risk-ranked vs random re-checking}
+I planted examiner-style errors (wrong total, mark above the maximum, copy error, unmarked answer, correct answer
+under-marked, wrong answer over-marked) using a random plan that was fixed and saved \emph{before} the audit ran; the audit
+never sees it \dec{D013}. To keep the test honest, the page marks the audit sees get reading noise at the error rate
+measured in the bake-off. The whole test was repeated with 30 different random plans (Figure~\ref{fig:h1}).
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.86\linewidth,height=6.3cm,
+  xlabel={Share of scripts re-checked by a human (\%)},ylabel={Planted errors caught (\%)},
+  xmin=0,xmax=55,ymin=0,ymax=75,grid=major,grid style={gray!20},
+  legend pos=north west,legend style={font=\footnotesize,cells={anchor=west}},tick label style={font=\footnotesize}]
+\addplot[color=accent,mark=*,thick] coordinates {(5,8.7)(10,18.3)(15,26.3)(20,30.1)(30,42.1)(40,52.8)(50,61.3)};
+\addlegendentry{Risk-ranked (full system)}
+\addplot[color=gray,dashed,thick] coordinates {(5,4)(10,10)(15,16)(20,20)(30,30)(40,40)(50,50)};
+\addlegendentry{Random re-checking}
+\draw[gray!60] (axis cs:20,0)--(axis cs:20,75);
+\end{axis}
+\end{tikzpicture}
+\caption[H1 result, averaged over 30 random error plans. At 20\% the range across plans was 16.7--47.9\%.]{H1 result, averaged over 30 random error plans. At 20\% the range across plans was 16.7--47.9\% \dec{D018}.}
+\label{fig:h1}
+\end{figure}
+
+\begin{keybox}[H1 result]
+At a 20\% re-checking budget, risk ranking caught \textbf{30.1\%} of planted errors vs \textbf{20\%} for random checking
+(about \textbf{1.5x}). It was better on average at every budget, but not in every single run. Arithmetic errors were caught
+well; judgement errors (a good answer given low marks) were mostly missed.
+\end{keybox}
+
+
+\subsection{Ablation: which signals actually help?}
+This analysis was added \emph{after} seeing the results, so it is reported next to the main result, not instead of it
+\dec{D019}. The same 30 plans were reused, with no new model calls, while switching signals on and off.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Ablation at a 20\% budget, and ranks of the three real errors (out of 50; 10 or better is caught).}
+\label{tab:ablation}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Version} & \textbf{Planted errors caught} & \textbf{Rank of S10 / S11 / S12} \\
+\midrule
+Full system (as reported above) & 30.4\% & 14 / 1 / 2 \\
+\textbf{Rules + AI (no red-ink check)} & \textbf{39.2\%} & \textbf{11 / 1 / 2} \\
+Rules only & 41.1\% & 50 / 2 / 2 \\
+AI only & 23.9\% & 10 / 5 / 12 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+  \item \textbf{Removing the red-ink check helps} (30\% to 39\%, about 2x random). With only 27\% reading accuracy, that
+        check raises false alarms on almost every script.
+  \item \textbf{``Rules only'' looks best but is misleading.} Two of my six planted error types are exactly what the rules
+        check, and in the real data it ranks Student\_10's judgement error \textbf{last}.
+  \item \textbf{``AI only'' is close to random} in the simulation, but it is the only version that put Student\_10 in the top 10.
+  \item \textbf{Best balance today: rules + AI second reader.} The red-ink check should return once red-ink reading is fixed.
+\end{itemize}
+
+\subsection{Cost (H2): an estimate, not a measured cost}
+The full calculation and every assumption are in \dec{D021}. Measured: a median of \textbf{48 seconds per script}.
+Assumed: GPU power 180\,W (the card's maximum, so a high figure), electricity \rs60/kWh, and a \rs450{,}000 PC used over three
+years of 8-hour days. Estimated audit cost: about \textbf{\rs0.83 per script} (\rs0.14 electricity + \rs0.69 hardware),
+about 600 scripts per GPU per 8-hour day. Examiners are paid about \rs35 per script \citep{propk2023fee}. The audit does not
+replace human re-checking; it decides \emph{which} scripts get re-checked. So, roughly, \textbf{auditing every script by
+machine costs about the same as a human re-checking 2--3 scripts out of every 100}. Scanning, storage, staff, maintenance
+and the second-reader calls are not included.
+
+\section{Technical challenges}
+\begin{enumerate}
+  \item \textbf{No real board data.} Solved with a public dataset that has scripts, a key, red-ink marking and a mark list.
+  \item \textbf{Students answer in any order}, so fixed answer boxes were not possible; the model must find question numbers.
+  \item \textbf{Mixed teacher and student ink.} Solved partly with red-ink separation.
+  \item \textbf{Testing without known errors.} Solved by planting errors with a sealed random plan, plus a real-world pilot.
+  \item \textbf{Not fooling myself:} a fixed selection rule, weights fixed before results, 30 repeated plans, an honest ablation.
+  \item \textbf{Speed on one consumer GPU} (1--2 minutes per script at first).
+\end{enumerate}
+
+\section{What failed, and how I resolved it}
+\begin{table}[H]
+\centering
+\small
+\caption{Failures during experimentation.}
+\label{tab:failures}
+\begin{tabularx}{\linewidth}{@{}LLP{1.4cm}@{}}
+\toprule
+\textbf{What failed} & \textbf{How it was resolved} & \textbf{Record} \\
+\midrule
+Qwen models returned empty answers (``thinking'' versions used their output budget on hidden reasoning) &
+  Switched to the instruct versions, which also became 3--8x faster & \dec{D015} \\
+My code cached those empty answers and would have reused them & Never reuse empty answers; save diagnostics for every call & \dec{D015} \\
+A merge bug double-counted red marks guessed on the wrong page & Keep a red mark only if the same question was found on the same page & \dec{D016} \\
+Reading the examiner's red numbers: 27\% at best & Red-ink separation lifted it from 13\% to 27\%; the rest accepted and documented as the main limitation & \dec{D016,D018} \\
+The full run became about 12x slower partway through & Checked GPU and Ollama, restarted Ollama, one notebook per server; cost uses the median & \dec{D017} \\
+The red-ink check hurt the ranking & Ablation showed rules + AI works better until reading improves & \dec{D019} \\
+One random error plan gave an over-optimistic 54\% vs 20\% & Reported the 30-plan average (30\% vs 20\%) as the main result & \dec{D018} \\
+A source was mis-attributed (Peshawar board reported as FBISE) & Re-checked every news source's headline before citing & \dec{D022} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{limitbox}[Main limitation]
+The examiner's \textbf{red ink} is not read reliably (27\%). The model often cannot tell which question a red mark belongs to
+(the question numbers are faded in the red layer), reports only the tick without the number, or misreads digits \dec{D016}.
+Everything else works: reading students (99\%), the rule checks, and the AI second reader. These runs used one consumer GPU
+and an 8B model; a state-level deployment would have far better hardware, which clearly helps speed and makes larger or
+fine-tuned models possible. Whether those fix red-ink reading still has to be tested \dec{D018}.
+\end{limitbox}
+
+\section{What I would improve with another week}
+\begin{enumerate}
+  \item \textbf{Fix red-ink reading:} fade the student's ink less so question numbers stay visible; ask only for the red
+        number; crop every red mark and read it separately, matching it to the nearest question by position.
+  \item \textbf{Larger models and fine-tuning:} with better hardware, test 30B--70B vision models and LoRA on marked scripts.
+  \item \textbf{A better AI second reader:} give it senior-examiner examples for each question and ask for its confidence.
+  \item \textbf{More realistic data:} a small set of Pakistani board-style scripts (with permission), including Urdu.
+  \item \textbf{Measure the cost properly:} GPU power with \texttt{nvidia-smi} during my own run, and time the second-reader calls.
+  \item \textbf{Tune the risk score} on a separate validation set, not on the same 50 scripts.
+  \item \textbf{A review screen} for senior examiners: ranked list, page view, reasons, and a ``correct / wrong mark'' button.
+\end{enumerate}
+
+\section{Limitations}
+One university exam, 50 scripts, English only, not a Pakistani board exam. Planted error rates and types are my own
+assumptions; no board publishes real error rates. The teacher's marks are treated as truth except for verified fixes, and
+14 students are marked ``uncertain'' (results are reported with and without them). Weak red-ink reading limits the
+consistency checks. The ablation was added after seeing the results. The cost is an estimate based on my own assumptions.

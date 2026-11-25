@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 0.5, \"reason\": \"The student correctly mentions Z-score for detection but omits other methods like IQR or visual tools, and does not address handling outliers.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 41, "seconds": 2.726433038711548}

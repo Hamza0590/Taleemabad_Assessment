@@ -1,0 +1,13 @@
+variant,case,what,rank_of_50,caught_at_20pct
+full (as reported),Student_10,correct MCQs crossed (~6 marks lost),14,False
+full (as reported),Student_11,Q34 counted twice (4/2),1,True
+full (as reported),Student_12,section total does not add up,2,True
+rules + AI,Student_10,correct MCQs crossed (~6 marks lost),11,False
+rules + AI,Student_11,Q34 counted twice (4/2),1,True
+rules + AI,Student_12,section total does not add up,2,True
+rules only,Student_10,correct MCQs crossed (~6 marks lost),50,False
+rules only,Student_11,Q34 counted twice (4/2),2,True
+rules only,Student_12,section total does not add up,2,True
+AI only,Student_10,correct MCQs crossed (~6 marks lost),10,True
+AI only,Student_11,Q34 counted twice (4/2),5,True
+AI only,Student_12,section total does not add up,12,False

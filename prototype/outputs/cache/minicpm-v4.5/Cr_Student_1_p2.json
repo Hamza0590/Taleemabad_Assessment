@@ -1,0 +1,1 @@
+{"text": "{\"answers\": [{\"q\": 26, \"red_symbol\": \"tick\"}, {\"q\": 28, \"red_symbol\": \"cross\", \"red_mark\": 2}, {\"q\": 25, \"red_symbol\": \"none\"}, {\"q\": 34, \"red_symbol\": \"tick\"}, {\"q\": 30, \"red_symbol\": \"tick\"}], \"page_totals\": [33]}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 90, "seconds": 4.212970018386841}

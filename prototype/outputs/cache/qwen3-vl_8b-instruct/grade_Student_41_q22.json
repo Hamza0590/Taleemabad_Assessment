@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 1, \"reason\": \"The student correctly identifies overfitting but misstates the training accuracy as 98% instead of 99%, and uses vague language like 'not really accurate' without referencing generalization.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 51, "seconds": 2.870396614074707}

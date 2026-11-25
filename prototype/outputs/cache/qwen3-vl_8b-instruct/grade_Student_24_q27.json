@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 0.5, \"reason\": \"The student mentions Z-score for detection and trimming for handling, but lacks specific methods like IQR or visual tools (box plots/scatter plots) and does not fully address how to handle outliers beyond cutting.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 55, "seconds": 2.9243268966674805}

@@ -1,0 +1,17 @@
+% =====================================================================
+\chapter{Reproducibility}
+\label{app:repro}
+% =====================================================================
+\begin{itemize}
+  \item \textbf{Code:} \texttt{prototype/marking\_audit\_v2\_run.ipynb}, one notebook with a heading on every block, and all
+        outputs kept \citep{notebook}. Result tables are saved in \texttt{prototype/outputs/}.
+  \item \textbf{Hardware:} one NVIDIA RTX 5060 Ti (16\,GB), Windows, Ollama.
+  \item \textbf{Models (Ollama tags):} \texttt{qwen3-vl:8b-instruct}, \texttt{qwen3-vl:4b-instruct}, \texttt{minicpm-v4.5},
+        \texttt{glm-ocr}. Temperature 0.
+  \item \textbf{Data:} \citep{dataset2026}. Download it into \texttt{data/}. The file \texttt{Student\_MCQ.csv} is never loaded.
+  \item \textbf{Randomness:} fixed seeds (2026 for the main plan; 100--129 for the 30 repeated plans).
+  \item \textbf{Caching:} every model answer is cached on disk, so re-running the notebook gives the same results without new
+        model calls.
+  \item \textbf{Run order:} sections 0--10 (setup and bake-off), 11--12 (read all scripts, second reader), 13--18 (planted
+        errors, audit, evaluation, ablation, cost).
+\end{itemize}

@@ -1,0 +1,119 @@
+% =====================================================================
+\chapter{Problem Identification and Innovation}
+\label{sec:problem}
+% =====================================================================
+
+\section{The problem: nobody checks the checker}
+
+When my FSc Part-I results came out, my Physics marks were much lower than I expected. I knew something was wrong.
+I had not just answered the paper; I had attempted three extra questions, and I had written every answer neatly so the
+examiner could follow each step. So I applied for rechecking.
+
+When I finally saw my paper, I was shocked. Almost every answer had a tick on it. Nothing was crossed out in red. And
+still, I had been given about half the marks. I pointed this out to the official at the board office. He said,
+``This is recounting, not rechecking.'' He meant that they only add up the marks again. Nobody looks at whether the
+marking itself was right. My marks stayed the same.
+
+That was the first real shock of my education. It also made me notice something I had heard about for years: in
+government schools, teachers who mark board papers are paid for each paper they check, so checking more papers
+means earning more. Fast marking is rewarded. Careful marking is not.
+
+And this is not a small mistake. In our system, a few marks decide almost everything: which college a student gets
+into, whether they make the merit list for medicine or engineering, which path their life takes. One careless checking,
+done in a hurry by someone trying to finish more papers, can push a student away from the direction they wanted to
+follow. Often they never even find out why. That is not a small damage. It can change the course of a whole life.
+
+Since then, one question has stayed with me. If an examiner makes a mistake, who notices? In most cases, nobody does.
+In our board exams, nobody checks the checker.
+
+\begin{keybox}[The problem in one line]
+In Pakistan's board exams, millions of handwritten scripts are marked by examiners who are paid per script, and most
+scripts are never seen by a second person. When a mark is wrong, the student usually has no real way to get it corrected.
+\end{keybox}
+
+\section{Why it is worth solving}
+\begin{itemize}
+  \item \textbf{Scale.} In 2026, 1,348,352 candidates sat Punjab's Class 10 exam and 1,395,575 sat Class 9 across the nine
+        Punjab boards \citep{propk2026matric,propk2026class9}. At roughly 8 theory papers each, that is about
+        \textbf{20 million answer scripts a year} for matric in Punjab alone (my estimate).
+  \item \textbf{Stakes.} These marks decide merit lists, college admissions and MDCAT/ECAT aggregates. In one reported
+        case, a candidate's mark went from 2/75 to 61/75 after rechecking \citep{tribune2014fiasco} (a 2014 report).
+  \item \textbf{Incentives reward speed.} Under Punjab's 2023 pay revision, matric examiners receive \rs45 per paper if they
+        check more than 50 papers and \rs35 if they check fewer \citep{propk2023fee}. The rate goes up for marking more.
+  \item \textbf{Errors are documented, not hypothetical.} After the SSC 2024 exams, BISE Rawalpindi penalised 435 marking
+        staff for wrong marking, including 66 head examiners and 210 sub-examiners \citep{dawn2024examiners}. In December
+        2025, a Class 9 student found an unmarked question and answers ``ticked and under-credited without justification''
+        \citep{tribune2025receiving}. That is the same pattern as my own paper.
+  \item \textbf{Results are falling.} Rawalpindi board had the lowest pass rate in Punjab in 2026: 37.56\% in Class 9
+        \citep{propk2026class9}. Marking is not the only reason, but when results fall, students deserve to know their
+        marks are at least correct.
+  \item \textbf{The system cannot measure its own fairness.} I could not find any board publishing how many rechecking
+        requests it receives or how many marks change after review \citep{research01}.
+\end{itemize}
+
+\section{How the problem is addressed today}
+
+\begin{table}[H]
+\centering
+\caption{Current ways of checking marking quality, in Pakistan and abroad.}
+\label{tab:current}
+\begin{tabularx}{\linewidth}{@{}P{4.6cm}L@{}}
+\toprule
+\textbf{Mechanism} & \textbf{What it does} \\
+\midrule
+Manual marking centres (Punjab) & Head examiner and sub-examiners; the head examiner rechecks a sample of about 17--20\% of
+  scripts \citep{bisemultan,ilmkidunya2026} \\
+Rechecking (Punjab, until 2025) & Only verified totals and unmarked questions, with no review of marking accuracy
+  \citep{techjuice2025remark} \\
+Re-marking (BISE Lahore, announced Oct 2025) & Real re-evaluation, pending cabinet approval \citep{propk2025remark} \\
+E-marking (Punjab, from 2026, pilots first) & Scanned scripts, secure examiner IDs, face verification, time limits; the
+  system adds up totals \citep{dawn2025digitisation,tribune2026online} \\
+E-marking (BISE Peshawar, 2023) & First examiner marks; a second randomly reviews 20\% of marked papers; the head
+  examiner intervenes \citep{dawn2023peshawar} \\
+E-marking (FBISE) & About 10\% of papers go to the head examiner; a head examiner said their checking role became more limited
+  under e-marking \citep{dawn2023fbise} \\
+International (Cambridge, AQA) & ``Seeding'': pre-marked scripts hidden among examiners' work to test them
+  \citep{cambridgeqa,ofqual2018} \\
+International research (AQA, Ofqual) & Trials of AI as a \emph{quality check} of human marking, not as a marker
+  \citep{tes2024aqa,kcl_aqa,ofqual2026} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Limitations of existing solutions}
+\begin{enumerate}
+  \item \textbf{Checks are random samples.} 80--90\% of scripts are never looked at by a second person. AQA's own research
+        found that sampling-based quality assurance has little potential to improve marking reliability directly: it
+        catches bad examiners for retraining, but does not fix the wrong mark on a particular student's paper
+        \citep{pinotdemoira}.
+  \item \textbf{E-marking fixes arithmetic, not judgement.} The system adds up totals itself \citep{ofqual2018}, but nothing
+        public says how Punjab's version checks whether a correct answer was under-credited.
+  \item \textbf{The transition is long.} Punjab expects two to three years before all exams move to e-marking
+        \citep{pakobserver2026}. Until then, most subjects are marked by hand on paper.
+  \item \textbf{Rechecking is reactive and costly for families.} The student has to suspect an error, pay, travel and argue.
+        A wrong mark on a paper nobody suspects is never found.
+  \item \textbf{UK AI work does not transfer directly.} The idea of AI checking human markers is not new: AQA has trialled
+        it, and its chief executive said AI could ``mark markers'' very soon \citep{tes2024aqa,schoolsweek2026}. But that
+        work assumes mature on-screen systems and clean data. Pakistani scripts are handwritten, bilingual (Urdu and
+        English), and often still on paper \dec{D006}.
+\end{enumerate}
+
+\section{My approach}
+I do not replace examiners, and I do not let AI give marks. Regulators currently describe AI as promising for quality
+assurance but not ready to mark high-stakes exams \citep{ofqual2026}. So I propose Parakh, an \textbf{audit layer} that tells the
+existing reviewers \emph{where to look} \dec{D004,D006}:
+\begin{enumerate}
+  \item \textbf{Consistency rules (no AI judgement).} Check the examiner's own marking on the script: answers ticked but
+        marks cut, unmarked questions, totals that do not add up, marks above the maximum.
+  \item \textbf{AI second reader.} A vision-language model reads each answer and estimates a mark from the answer key.
+        A big gap between its estimate and the examiner's mark raises the script's risk score. It never sets the mark.
+  \item \textbf{Risk-ranked review instead of random review.} Boards already pay for re-checking a share of scripts. The
+        same effort goes to the highest-risk scripts first.
+  \item \textbf{On-premise.} Scripts are secret and there are millions of them, so models run on the board's own machines.
+\end{enumerate}
+
+\begin{keybox}[Hypotheses tested in the prototype]
+\textbf{H1:} With a fixed review budget (20\% of scripts re-checked by a human), risk-ranked review catches more marking
+errors than random review. \\
+\textbf{H2:} Auditing a script by machine costs much less than one human re-check. \dec{D007}
+\end{keybox}

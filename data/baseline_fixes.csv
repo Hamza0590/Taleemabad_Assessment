@@ -1,0 +1,4 @@
+student,question,recorded,baseline,reason,evidence,status
+Student_10,MCQ_total,2,8,"Correct MCQ answers (13,14,16,17,18,19) crossed; same answers ticked on Student_1",data/verify/s10_mcq_hi.png,confirmed
+Student_11,Q34,4.0,2.0,"Answer continued over two pages; teacher awarded 2 on each part; max is 2",data/verify/s11_all.png,confirmed
+ALL,Q1,teacher accepted D,key B only,"Published key says B; teacher ticked D (e.g. Student_1)",data/peek/c1-1.png,decided (official key)

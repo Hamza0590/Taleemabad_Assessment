@@ -1,0 +1,8 @@
+pipeline,model,coverage,mcq_letter_acc,red_mark_acc,sec_per_page
+A,qwen3-vl:8b-instruct,0.957,1.0,0.129,8.7
+A,qwen3-vl:4b-instruct,0.583,0.4,0.113,15.6
+A,minicpm-v4.5,0.969,0.97,0.161,10.9
+C,qwen3-vl:8b-instruct,0.951,0.99,0.274,12.2
+C,qwen3-vl:4b-instruct,0.939,0.99,0.161,28.8
+C,minicpm-v4.5,0.982,0.99,0.097,13.4
+B,glm-ocr,0.595,0.97,,27.8

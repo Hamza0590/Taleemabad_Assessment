@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 0.5, \"reason\": \"Student correctly identifies structured data as labeled but incorrectly includes JSON (semi-structured) in structured examples; semi-structured description is vague and lacks key markers.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 45, "seconds": 2.7843058109283447}

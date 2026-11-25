@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 1.5, \"reason\": \"Student correctly identifies structured data as row/column format with examples, but misrepresents semi-structured data as 'structured but unordered' \u2014 it's not fully structured like relational data.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 50, "seconds": 2.8576550483703613}

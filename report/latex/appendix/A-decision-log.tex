@@ -1,0 +1,37 @@
+% =====================================================================
+\chapter{Decision Log}
+\label{app:decisions}
+% =====================================================================
+Every decision was written down as it was made, with the options considered, the choice and the reason. Failures were
+recorded the same way. The full records are in the project's \texttt{decisions/} folder.
+
+\begin{small}
+\begin{tabularx}{\linewidth}{@{}P{1.2cm}L@{}}
+\toprule
+\textbf{ID} & \textbf{Decision} \\
+\midrule
+D-001 & Stay in education, but take the problem from personal experience instead of asking AI for ideas \dec{D001} \\
+D-002 & Six candidate problems from lived experience, with evidence and verdicts \dec{D002} \\
+D-003 & Link them in one story, but build only one thing: the marking audit \dec{D003} \\
+D-004 & Add an AI second reader on top of e-marking; reject AI grading and a new e-marking platform \dec{D004} \\
+D-005 & Focus the story on marking only; teacher shortage and parents' attitudes left out \dec{D005} \\
+D-006 & AI checking of markers exists in the UK; cite it and claim only the Pakistan-specific contribution \dec{D006} \\
+D-007 & Hypotheses H1 (detection at a fixed budget) and H2 (cost) \dec{D007} \\
+D-008 & Use a public dataset (Mendeley); six alternatives rejected \dec{D008} \\
+D-009 & Run all models locally (privacy, cost, Q3) \dec{D009} \\
+D-010 & Dataset findings; verify real errors; never use the file with real names; Q1 = official key B \dec{D010} \\
+D-011 & Architecture: red-ink split + vision model; model chosen by a bake-off; Ollama \dec{D011} \\
+D-012 & Report the dataset's own issues as pre-existing, kept separate from planted errors \dec{D012} \\
+D-013 & Experiment design: page and award-list views, calibrated noise, 6 error types, sealed plans \dec{D013} \\
+D-014 & How Section 2 is answered; Q1 choice approved \dec{D014} \\
+D-015 & Smoke test: empty outputs from ``thinking'' models; empty-cache bug; fixes \dec{D015} \\
+D-016 & Bake-off results; red-number reading only 27--29\%; accepted for now; merge bug fixed \dec{D016} \\
+D-017 & Incident: full run about 12x slower; fixed by restart; cost uses the median \dec{D017} \\
+D-018 & Full-run results; main limitation; hardware note \dec{D018} \\
+D-019 & Ablation: red-ink check hurts; rules + AI is the best balance \dec{D019} \\
+D-020 & Submission package: report, video, results file, repository; no web deployment of the prototype \dec{D020} \\
+D-021 & Cost per script: a measured time plus stated assumptions \dec{D021} \\
+D-022 & Source correction: a 2023 e-marking report was about BISE Peshawar, not FBISE \dec{D022} \\
+\bottomrule
+\end{tabularx}
+\end{small}

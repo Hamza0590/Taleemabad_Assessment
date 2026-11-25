@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 0.5, \"reason\": \"Student correctly identifies structured data as tabular but misrepresents semi-structured data as 'readable by programmers and machine' without mentioning markers or format examples like JSON.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 48, "seconds": 2.815221071243286}

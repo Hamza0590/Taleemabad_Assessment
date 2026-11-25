@@ -1,0 +1,28 @@
+% ---------------- Executive summary ----------------
+\chapter*{Executive Summary}
+\addcontentsline{toc}{chapter}{Executive Summary}
+\thispagestyle{plain}
+
+\textbf{The problem.} In Pakistan's board exams, millions of handwritten answer scripts are marked by examiners who are
+paid per script, and only a small random sample is ever checked by a second person. Until recently, ``rechecking''
+in Punjab only added up the marks again \citep{techjuice2025remark}. When a mark is wrong, a student usually has no real
+way to get it corrected, and a few marks can decide a merit list, an admission, or a whole career path.
+
+\textbf{The idea.} \emph{Parakh} is an audit layer that does not mark papers, but checks the marking.. For every scanned script it
+reads the student's answers and the examiner's red marks, runs simple consistency rules, asks an AI ``second reader''
+for an independent mark estimate, and ranks scripts by risk. Human reviewers then re-check the most suspicious scripts
+first, instead of a random sample. The AI never gives the final mark.
+
+\textbf{What I built and found.} A fully local prototype (one consumer GPU, open models, no cloud APIs), tested on a public
+dataset of 50 real handwritten exam scripts \citep{dataset2026}:
+\begin{itemize}
+  \item Students' answers were read with about \textbf{99\%} accuracy; examiners' red numbers with only \textbf{27\%}. This is the main limitation.
+  \item With the same 20\% re-checking effort, risk ranking caught \textbf{30\%} of planted marking errors vs \textbf{20\%} for random checking
+        (average of 30 runs). A follow-up analysis showed \textbf{39\%} (about 2x random) when the unreliable red-ink check is removed.
+  \item The dataset, described as cross-verified, already contained real marking errors. The audit ranked two of them
+        \textbf{\#1 and \#2} of 50, and the AI second reader found a real \textbf{6-mark} under-marking.
+  \item Estimated cost: about \textbf{\rs0.83 per script}, compared with about \rs35 paid for a human re-check (an estimate, see \dec{D021}).
+\end{itemize}
+
+\textbf{How to read this report.} Numbers marked with a decision number, e.g. \dec{D018}, can be traced to a file in the
+project's \texttt{decisions/} folder, which records why each choice was made, which options were rejected, and what failed.

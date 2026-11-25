@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 1, \"reason\": \"Student correctly identifies structured data as tabular and semi-structured as JSON/XML but omits key descriptors like 'rows/columns' or 'markers'.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 43, "seconds": 2.7653112411499023}

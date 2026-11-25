@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 1.5, \"reason\": \"Correctly identifies structured data as spreadsheet/database/CSV and semi-structured as tag-based with XML/HTML, but omits 'grid' and 'markers' from model answer.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 50, "seconds": 2.8548219203948975}

@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 0, \"reason\": \"The student's answer misrepresents the RBF kernel as measuring distance from linear boundaries, which is incorrect; it maps data non-linearly using a radial basis function.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 46, "seconds": 2.7999024391174316}

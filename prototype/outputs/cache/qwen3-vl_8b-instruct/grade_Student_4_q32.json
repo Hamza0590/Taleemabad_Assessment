@@ -1,0 +1,1 @@
+{"text": "{\"mark\": 0.5, \"reason\": \"The student correctly identified 'k' in KNN but incorrectly named 'weight' and 'k-mean' (should be K-NN), so partial credit for one correct hyperparameter.\"}", "thinking_chars": 0, "done_reason": "stop", "output_tokens": 51, "seconds": 2.8558974266052246}
