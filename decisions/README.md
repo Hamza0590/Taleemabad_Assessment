@@ -37,6 +37,8 @@ and say why.
 | D-024 | 2026-11-26 | Title: "Parakh: Risk-Ranked Auditing of Board Exam Marking with Local AI"; system named Parakh | DECIDED |
 | D-025 | 2026-11-26 | Excel results file (submission/Parakh_results.xlsx): 8 sheets, formulas for derived numbers, editable cost assumptions | DONE |
 | D-026 | 2026-11-26 | GitHub repo (parakh-repo/): only the _run notebook (old versions archived, not deleted), outputs + model cache, decisions, research, report, Excel; dataset/page images/name files excluded; MIT licence | DECIDED |
+| D-027 | 2026-11-26 | Cover note for the form text area (submission/cover-note.md): story, 30.1% vs 20% headline (39.2% shown as post-hoc ablation), limitation stated, links; also corrects D-020 on the cache | DRAFT |
+| D-028 | 2026-11-26 | No video (optional field); 14-slide self-explanatory deck instead, same honesty rules as the report | DECIDED |
 
 Research notes live in ../research/
 
